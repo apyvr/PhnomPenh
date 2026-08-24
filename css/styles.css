@@ -334,14 +334,14 @@ img{display:block;max-width:100%}
 .legacy-cta-wrap{text-align:center;margin-top:54px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
 
 /* ---------- menu section navigation ---------- */
-.menu-nav{position:sticky;top:0;background:var(--surface);border-bottom:1px solid rgba(15,12,11,.14);
-  z-index:40;padding:10px 0;display:none}
+.menu-nav{position:sticky;top:0;background:var(--surface);border-bottom:none;
+  z-index:40;padding:0;display:none}
 .menu-nav.on{display:block}
 
 /* Main category tabs (mobile/tablet only) - Large box style */
-.menu-nav-main-track{display:none;gap:8px;padding:0;margin:0}
+.menu-nav-main-track{display:flex;gap:4px;padding:0 20px 0 20px;margin:0;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
 .menu-nav-main-track::-webkit-scrollbar{display:none}
-.menu-nav-main-tab{flex:1 1 calc(33.333% - 5px);padding:20px 8px;font-size:12px;font-weight:600;letter-spacing:.11em;
+.menu-nav-main-tab{flex:1 1 0;padding:18px 8px;font-size:12px;font-weight:600;letter-spacing:.11em;
   text-transform:uppercase;color:rgba(15,12,11,.5);background:rgba(15,12,11,.08);border:none;cursor:pointer;
   transition:background .25s,color .25s;white-space:normal;text-align:center;border-radius:2px;line-height:1.2}
 .menu-nav-main-tab:hover{background:rgba(15,12,11,.12);color:var(--ink)}
@@ -359,11 +359,11 @@ img{display:block;max-width:100%}
 
 /* Grouped subcategory tracks (for mobile/tablet) - scrollable tabs */
 .menu-nav-subtrack{display:none;flex-wrap:nowrap;gap:24px;overflow-x:auto;overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 0;border-bottom:1px solid rgba(15,12,11,.1);
-  margin-top:0}
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:8px 0;border-bottom:1px solid rgba(15,12,11,.12);
+  margin-top:0;margin-bottom:0}
 .menu-nav-subtrack::-webkit-scrollbar{display:none}
 .menu-nav-subtrack.active{display:flex}
-.menu-nav-subtrack .menu-nav-tab{flex-shrink:0;padding:4px 0;font-size:10.5px;border-bottom-width:2px}
+.menu-nav-subtrack .menu-nav-tab{flex-shrink:0;padding:3px 0;font-size:10.5px;border-bottom-width:2px}
 
 /* ========== menu ========== */
 .menu{background:var(--surface);color:var(--ink);padding:32px 0 104px}
