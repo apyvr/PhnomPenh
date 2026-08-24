@@ -11,7 +11,8 @@
       "Bash(git commit -m 'Correct navigation to Legacy - Shop - Menu - Visit *)",
       "Bash(git commit -m 'Increase menu width from 900px to 1200px *)",
       "Bash(git commit -m 'Implement two-level mobile menu navigation *)",
-      "Bash(git commit -m 'Add sub-navigation bars for mobile food categories *)"
+      "Bash(git commit -m 'Add sub-navigation bars for mobile food categories *)",
+      "Bash(git commit -m 'Redesign mobile menu with Cactus Club-style large category boxes *)"
     ]
   }
 }
