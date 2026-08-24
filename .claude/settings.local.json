@@ -16,7 +16,8 @@
       "Bash(git commit -m 'Fix mobile category box layout - display all 3 boxes in a row *)",
       "Bash(git commit -m 'Tighten mobile menu spacing to match Cactus Club design *)",
       "Bash(git commit -m 'Refine mobile menu navigation spacing and alignment *)",
-      "Bash(git commit -m 'Fix menu navigation behavior and hide sub-navigation for single-item categories *)"
+      "Bash(git commit -m 'Fix menu navigation behavior and hide sub-navigation for single-item categories *)",
+      "Bash(git commit -m 'Minimize vertical spacing between Food sub-navigation rows *)"
     ]
   }
 }

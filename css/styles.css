@@ -358,9 +358,9 @@ img{display:block;max-width:100%}
 .menu-nav-tab.active{color:var(--ink);border-bottom-color:var(--red)}
 
 /* Grouped subcategory tracks (for mobile/tablet) - all items visible */
-.menu-nav-subtrack{display:none;flex-wrap:wrap;gap:16px 24px;overflow-x:visible;overflow-y:visible;
+.menu-nav-subtrack{display:none;flex-wrap:wrap;column-gap:24px;row-gap:2px;overflow-x:visible;overflow-y:visible;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 0;border-bottom:1px solid rgba(15,12,11,.12);
-  margin-top:0;margin-bottom:0;justify-content:center;row-gap:4px}
+  margin-top:0;margin-bottom:0;justify-content:center}
 .menu-nav-subtrack::-webkit-scrollbar{display:none}
 .menu-nav-subtrack.active{display:flex}
 .menu-nav-subtrack .menu-nav-tab{flex-shrink:0;padding:3px 0;font-size:10.5px;border-bottom-width:2px}
