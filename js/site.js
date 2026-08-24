@@ -117,10 +117,10 @@
         mainTabs.forEach(function (t) { t.classList.remove('active'); });
         this.classList.add('active');
 
-        // Show/hide subcategory tracks
+        // Show/hide subcategory tracks (only for Food, hide for Desserts/Drinks)
         subTracks.forEach(function (track) {
           var trackCategory = track.getAttribute('data-category');
-          track.classList.toggle('active', trackCategory === category);
+          track.classList.toggle('active', trackCategory === category && category === 'food');
         });
 
         // Hide all sections and reset subtabs
@@ -129,13 +129,14 @@
 
         // Show first subcategory of this category
         if (categoryTabs.length > 0) {
+          var activated = false;
           subTabs.forEach(function (tab) {
             var spy = tab.getAttribute('data-spy');
-            if (categoryTabs.indexOf(spy) !== -1) {
+            if (!activated && categoryTabs.indexOf(spy) !== -1) {
               tab.classList.add('active');
               var section = document.getElementById(spy);
               if (section) section.classList.add('active');
-              return; // Only activate first one
+              activated = true;
             }
           });
         }
