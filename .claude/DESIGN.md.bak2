@@ -1,0 +1,355 @@
+# Phnom Penh Restaurant — Design System
+
+Single source of truth for every page on this site. Read this file before building or editing any page. If a value is not in this file, it does not go on the site until it is added here.
+
+**Subject:** Phnom Penh Restaurant, 244 East Georgia Street, Vancouver Chinatown. Family run Cambodian and Vietnamese, open since 1985, third generation in the kitchen. Michelin Bib Gourmand 2022 through 2025.
+
+**The page's job:** get someone to decide to walk in tonight, and tell them what to order when they do.
+
+**Register:** premium and quiet. Light type, generous space, restrained gold. Not a busy neighbourhood-restaurant template.
+
+---
+
+## 1. Hard rules
+
+These are non-negotiable across all pages.
+
+1. Never introduce a colour, font, or size that is not defined in this file.
+2. All styling lives in `/css/styles.css`. No inline styles, no `<style>` blocks in page files.
+3. Header and footer come from the shared partial. They are never retyped per page.
+4. Images are real files in `/images/`. Never base64, never embedded.
+5. No em dashes and no semicolons anywhere in visible copy.
+6. Every page uses the same nav, the same button styles, and the same section rhythm.
+7. Mobile is checked at 100svh, not 100vh, for any full-height section.
+
+---
+
+## 2. Colour
+
+```css
+:root {
+  --gold:        #BF9C5C;  /* accent, button outlines, small rules, eyebrows */
+  --gold-hover:  #A8863F;  /* darker gold, hover states only */
+  --paper:       #FBF9F4;  /* default page background, near-white */
+  --ink:         #1C1A17;  /* body text and dark fills */
+  --ink-soft:    #5A554C;  /* secondary text, captions, meta */
+  --red:         #8E1F1F;  /* brand red, used only in gradient panels */
+  --red-deep:    #5E1212;  /* the dark stop of every red gradient */
+  --rule:        rgba(28,26,23,0.12); /* hairline dividers */
+}
+```
+
+**Usage discipline**
+
+- Paper is the default background for every section. Dark and red sections are the exception and there should be at most two per page.
+- Red is never a flat fill. It is always a gradient from `--red` to `--red-deep`. Flat red reads cheap at scale.
+- Gold is an outline and accent colour. It is not a fill colour for large areas.
+- Body text is `--ink` on paper. Never grey body text.
+
+---
+
+## 3. Typography
+
+One family, used across the whole site. The personality comes from weight and letterspacing, not from a second typeface.
+
+```css
+--font: 'Montserrat', -apple-system, sans-serif;
+```
+
+| Role | Weight | Size (desktop) | Transform | Tracking |
+|---|---|---|---|---|
+| Hero headline | 300 | 4.5rem | none | -0.01em |
+| Section heading | 300 | 2.5rem | none | -0.01em |
+| Eyebrow / label | 500 | 0.72rem | uppercase | 0.18em |
+| Body | 300 | 1.05rem | none | normal |
+| Body small / meta | 400 | 0.85rem | none | 0.02em |
+| Button | 500 | 0.78rem | uppercase | 0.14em |
+| Nav link | 500 | 0.8rem | uppercase | 0.12em |
+
+**Rules**
+
+- Weight 300 is the default. Anything heavier than 500 does not appear on this site.
+- Body line height 1.75. Headings 1.15.
+- Mobile headline sizes step down to 2.6rem hero and 1.9rem section heading. Nothing else changes.
+- No other font family. If a stray reference to another family appears, it is a bug.
+
+---
+
+## 4. Spacing and layout
+
+```css
+--max-width: 1240px;   /* content container */
+--max-text:  680px;    /* any paragraph block, for line length */
+--gutter:    5vw;      /* page side padding, min 20px on mobile */
+
+--space-section: 7.5rem;  /* vertical padding, top and bottom, desktop */
+--space-section-m: 4rem;  /* mobile */
+--space-block: 2.5rem;
+--space-tight: 1rem;
+--radius: 2px;            /* near-square, this site is not rounded */
+```
+
+Every section is `padding: var(--space-section) var(--gutter)`. Do not hand-tune section padding per page. If a section needs different breathing room, fix the token.
+
+---
+
+## 5. Components
+
+Build these once. Reuse them everywhere.
+
+**Nav (fixed, shared partial)**
+- Desktop: logo left, links centred, gold-outline Menu button right.
+- Links: Legacy, Shop, Reservations, Contact.
+- Mobile: logo and burger only. Burger animates to an X on open. The Menu button lives inside the overlay.
+- Background `--paper` at 92 percent opacity with a 12px backdrop blur, hairline bottom border in `--rule`.
+
+**Buttons**
+- One style only: gold outline, 1px `--gold` border, transparent fill, `--ink` text, radius 2px, padding 1rem 2.2rem.
+- Hover: fill goes to `--ink`, text and border go to `--gold`. 0.25s ease.
+- On dark or photo backgrounds the text starts as `--paper` instead of `--ink`. Nothing else changes.
+- There is no secondary button style. If a link needs less weight, it is a text link with a gold underline.
+
+**Hero**
+- Full viewport. `100vh` desktop, `100svh` mobile so the buttons clear the Safari toolbar.
+- Photo background, dark scrim overlay, light weight-300 headline, two gold-outline buttons.
+
+**Dish card (What to Order)**
+- Square photo, dish name in weight 300, one plain sentence of description, a decision-cue tag in the eyebrow style.
+- Three per row desktop, one per row mobile.
+
+**Review card**
+- Paper card on a photo background, hairline border, quote in body weight, source in body small.
+
+**Section divider**
+- One hairline rule in `--rule`, full container width. Only one divider per boundary. Watch for a `border-top` and a `border-bottom` doubling up.
+
+---
+
+## 6. Imagery
+
+- Real photography only. Food shots warm and close. Legacy and archival material in black and white.
+- Default crop `object-fit: cover` with `object-position: center top 22%` for any group or portrait photo, so heads are not cut off.
+- All images live in `/images/`, exported at 2x the display size, compressed, and served as `.webp` with a `.jpg` fallback.
+- Every image needs alt text describing the dish or the scene, not the file name.
+
+---
+
+## 7. Copy voice
+
+- Plain and factual. No corny openers, no sentimental flourishes, no rhetorical questions.
+- Grounded in verified facts only: 1985, Chinatown, the Huynh family, Bib Gourmand 2022 to 2025, walk-ins only, not on delivery apps.
+- Active voice. A button says what happens.
+- Sentence case for everything except eyebrows and buttons.
+- No em dashes. No semicolons.
+
+---
+
+## 8. File structure
+
+```
+/phnom-penh/
+  CLAUDE.md            <- points here, states the hard rules
+  DESIGN.md            <- this file
+  index.html
+  story.html
+  menu.html
+  visit.html
+  /partials/
+    header.html
+    footer.html
+  /css/
+    styles.css         <- all tokens and all components
+  /images/
+  /reference/          <- screenshots and inspiration, never shipped
+```
+
+Every page file should be short. It is content plus section markup, nothing else. If a page file is more than a few hundred lines, styling has leaked into it.
+
+---
+
+## 9. Per-page build checklist
+
+Run this before calling a page done.
+
+- [ ] Uses the shared header and footer partials, not a copy
+- [ ] Zero inline styles and zero `<style>` blocks
+- [ ] Every colour and size traces to a token in this file
+- [ ] Only Montserrat, only weights 300 to 500
+- [ ] Section padding uses `--space-section`, not a hand-tuned value
+- [ ] All buttons are the single gold-outline style
+- [ ] Checked at 375px wide, full-height sections use `100svh`
+- [ ] No doubled dividers at any section boundary
+- [ ] Images are files in `/images/`, not base64
+- [ ] Copy has no em dashes and no semicolons
+
+---
+
+## 10. As built: values verified against the homepage
+
+Audited by loading `phnom-penh-homepage.html` in a browser and reading computed styles at 1440px and at 375px. Everything below is what the homepage actually renders, not what was intended.
+
+**Read this before Sections 2 through 5.** The homepage was built dark first with a different palette from the one those sections describe. Where this section and an earlier section disagree, this section is the record of the built site.
+
+### 10.1 Colour, as built
+
+The homepage declares these and only these custom properties.
+
+```css
+:root {
+  --ink:         #0F0C0B;              /* page background, darkest ground */
+  --ink-2:       #17110E;              /* second dark ground, legacy section and footer */
+  --ink-3:       #1F1814;              /* third dark ground, panels */
+  --paper:       #F3E9DB;              /* warm cream, the text colour on dark grounds */
+  --surface:     #FBF9F4;              /* near white, the two light section grounds */
+  --paper-dim:   rgba(243,233,219,.66);/* secondary text on dark */
+  --paper-faint: rgba(243,233,219,.40);/* tertiary text on dark */
+  --red:         #C5302A;              /* accent, prices, rules, dots, nav underline */
+  --red-deep:    #9E241F;              /* dark stop of red gradients */
+  --gold:        #BF9C5C;              /* button borders, eyebrows, footer and visit labels */
+  --line:        rgba(243,233,219,.14);/* hairline on dark */
+  --line-strong: rgba(243,233,219,.26);/* hairline on dark, hover state */
+  --maxw:        1240px;
+  --ease:        cubic-bezier(.22,.61,.36,1);
+}
+```
+
+Where Section 2 differs from the build:
+
+| Token | Section 2 says | Built value | Note |
+|---|---|---|---|
+| `--ink` | `#1C1A17` | `#0F0C0B` | Built is much darker |
+| `--paper` | `#FBF9F4`, page background | `#F3E9DB`, text on dark | The name means the opposite thing in the build. The near white `#FBF9F4` is `--surface` |
+| `--red` | `#8E1F1F` | `#C5302A` | Built red is brighter and more orange |
+| `--red-deep` | `#5E1212` | `#9E241F` | Built dark stop is far lighter |
+| `--gold` | `#BF9C5C` | `#BF9C5C` | Matches |
+| `--gold-hover` | `#A8863F` | not present | Gold never darkens. Buttons fill with flat `--gold` on hover |
+| `--ink-soft` | `#5A554C` | not present | Secondary text on light grounds is written as literal `rgba(15,12,11,.5)` through `.74` |
+| `--rule` | `rgba(28,26,23,0.12)` | not present | Dark hairlines use `--line`. Light hairlines are literals, `rgba(15,12,11,.10)`, `.14`, `.16`, `.18` |
+
+Two further points where Section 2 and the build disagree on usage.
+
+- Section 2 says paper is the default ground and dark sections are the exception, at most two per page. The build is the reverse. Five grounds are dark, `--ink` for hero and visit, `--ink-2` for legacy and footer, a darkened photo for news. Two are light `--surface`, Michelin and popular dishes.
+- Section 2 says red is never a flat fill. In the build flat `--red` is the normal case for small accents, the nav hover underline, the timeline dots, prices, source labels, and the light section eyebrows. Exactly one red gradient survives on the page, the featured news panel, `linear-gradient(155deg,#C5302A 0%,#8E211C 100%)`.
+
+Colours used on the page that are not tokens: `#F6F1E9` button text, `#171310` button text on gold hover, `#e9e2d5` image placeholder, `#A62C26` and `#F3E9DB` inside the Michelin emblem SVG, `rgba(10,8,7,.82)` to `rgba(10,8,7,.9)` for the news scrim, `rgba(13,10,9,.5)` and `.55` for the news cards, `rgba(15,12,11,.8)` for the dish tag.
+
+### 10.2 Typography, as built
+
+```css
+/* not tokens in the build, written literally */
+body { font-family: "Montserrat", system-ui, sans-serif; }
+h1, h2, h3 { font-family: "Montserrat", sans-serif; font-weight: 300; line-height: 1.1; letter-spacing: .005em; margin: 0; }
+```
+
+Base body is `16.5px`, line height `1.65`, letter spacing `.01em`. At 560px and below it drops to `16px`. Section 3 says body is `1.05rem` at line height `1.75`, so both numbers are slightly off.
+
+Measured at 1440px:
+
+| Role | Selector | Size | Weight | Tracking |
+|---|---|---|---|---|
+| Hero headline | `.hero h1` | `clamp(2.7rem,7vw,5.6rem)`, renders 89.6px | 300 | `.008em`, line height 1.06 |
+| Section heading, visit | `.visit-head h2` | `clamp(2rem,4.6vw,3.3rem)`, renders 52.8px | 300 | `.005em` |
+| Section heading, all others | `.mich-h2`, `.legacy-h2`, `.pop-head h2`, `.news-head h2` | no size declared, renders 24.75px | 300 | `.005em` |
+| Hero sub | `.hero-sub` | `clamp(1.05rem,1.6vw,1.35rem)`, renders 21.6px | 400 | line height 1.55 |
+| Eyebrow | `.eyebrow` | `12px` | 600 | `.26em` uppercase, gold, with a 26px gold rule before it |
+| Body, dark grounds | `.legacy-lead` | `1.05rem` | 400 | line height 1.66 |
+| Body, light grounds | `.pop-lead`, `.mich-sub` | `1.02rem`, `1rem` | 400 | line height 1.6 |
+| Dish name | `.pop-body h3` | `1.22rem` | 600 | `.01em` |
+| Dish description | `.pop-why` | `.96rem` | 400 | line height 1.6 |
+| Button | `.btn` | `12.5px` | 500 | `.2em` uppercase |
+| Nav link | `.nav-link` | `13px` | 600 | `.14em` uppercase |
+| Column label | `.visit-col h4` | `.74rem` | 600 | `.22em` uppercase, gold |
+| Footer label | `.foot-col h4` | `11px` | 600 | `.2em` uppercase, gold |
+| Footer meta | `.foot-bottom` | `12.5px` | 400 | `.04em` |
+| Mobile menu link | `.mobile-menu a` | `28px` | 300 | `.01em` |
+
+At 560px and below the only headline change is `.hero h1`, which becomes `clamp(2.9rem,13vw,4.4rem)`. Section 3 claims mobile steps down to 2.6rem hero and 1.9rem section heading. Neither number appears in the build.
+
+Weights actually rendered on the homepage are 300, 400, 500 and 600. Section 3 says nothing heavier than 500 appears. Weight 600 is used for every eyebrow, nav link, dish name, price, column label and footer label, so it is load bearing, not a stray. Weight 700 appears in the stylesheet only in rules whose selectors match nothing on this page.
+
+The Google Fonts link requests Montserrat 300, 400, 500, 600, 700 and italic 300, 400. Only 300, 400, 500 and 600 upright are used.
+
+### 10.3 Spacing and layout, as built
+
+There are no spacing tokens in the build. Section 4 defines `--gutter`, `--max-text`, `--space-section`, `--space-section-m`, `--space-block`, `--space-tight` and `--radius`. None of them exist, and section padding is hand tuned per section, which is the thing Section 4 forbids.
+
+```css
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }   /* 0 20px at max-width 560px */
+```
+
+The gutter is a fixed `28px`, not `5vw`. Paragraph line length is not capped by a `--max-text` pixel value, it is capped per element in `ch`, ranging from `22ch` to `58ch`.
+
+Section vertical padding as built:
+
+| Section | Desktop | Mobile |
+|---|---|---|
+| `.hero` | `min-height:100vh`, upgraded to `100svh` where supported, inner padding `60px` top `74px` bottom | `86svh` at 700px and below, inner padding `40px` top `46px` bottom |
+| `.mich` | `98px` / `106px` | `76px` / `82px` at 600px and below |
+| `.legacy` | `102px` / `110px` | unchanged |
+| `.popular` | `104px` / `104px` | unchanged |
+| `.news` | `104px` / `108px` | unchanged |
+| `.visit` | `104px` / `106px` | unchanged |
+| `.foot` | `82px` / `34px` | unchanged |
+
+So the real section rhythm is roughly `104px` with four sections deviating by 2 to 22px for no recorded reason.
+
+Radius values in use, there is no single `--radius`: `0` on buttons, `2px` on the focus ring and the dish tag, `3px` on every photo and collage tile, `4px` on the news cards, `999px` on rules that are unused here.
+
+Grid gaps in use: `12px` legacy collage, `14px` button rows, `18px` news grid, `30px` dish grid, `40px` visit columns and footer columns, `64px` footer top.
+
+Breakpoints in use, none of which are recorded anywhere else: `920px`, `860px`, `760px`, `700px`, `600px`, `560px`, `520px`.
+
+### 10.4 Components, as built
+
+**Button.** One shape, `.btn`, with two modifier classes `.btn-red` and `.btn-ghost` that currently resolve to the same appearance.
+
+```css
+padding: 19px 42px;  border: 1.5px solid var(--gold);  border-radius: 0;
+background: transparent;  color: #F6F1E9;
+font: 500 12.5px/1 Montserrat;  letter-spacing: .2em;  text-transform: uppercase;
+transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+/* hover */  background: var(--gold);  color: #171310;
+/* on the light popular section */  .popular .btn { color: var(--ink); }
+```
+
+Section 5 says padding `1rem 2.2rem`, radius `2px`, a `1px` border, and a hover that fills with `--ink` and turns text gold. All five are wrong. Built padding is `19px 42px`, radius is `0`, the border is `1.5px`, and hover fills with gold.
+
+**Header.** `position: sticky`, not fixed. It starts transparent over a gradient that fades the hero into the top of the page, and JavaScript adds `.solid` past 40px of scroll, which switches it to `rgba(15,12,11,.92)` with a `10px` backdrop blur and a `--line` bottom border. Section 5 says fixed, paper at 92 percent, and a 12px blur. The opacity figure is right, the rest is not. Nav height is `80px`. Links are Legacy, Shop, Reservations, Contact, matching Section 5. The burger appears at 920px and below and animates to an X.
+
+**Hero.** Matches Section 5 in shape. Photo background with a two layer scrim, weight 300 headline, two gold outline buttons. The background image is scaled to 1.08 and animates to 1 over 24 seconds. Content is bottom aligned, not centred.
+
+**Dish card.** `.pop`, three per row desktop and one per row at 860px and below, matching Section 5 in count. The photo is `aspect-ratio: 4/5` upright, not square, and becomes `16/11` on mobile. The decision cue tag sits on the photo rather than under the text, and each card carries a price, which Section 5 does not mention.
+
+**Review card.** Section 5 describes a paper card on a photo background with a quote and a source. The built `.nc` is the opposite, a translucent dark card on a darkened photo, holding a source label, a headline and a summary, with no quote. There are four of them plus one wide featured panel.
+
+**Section divider.** No doubled borders were found. Boundaries are handled by background changes, with single hairlines inside sections only.
+
+### 10.5 Defects found during the audit
+
+These are recorded here rather than silently carried into the new stylesheet.
+
+1. **Four of the five section headings have no font size.** `.mich-h2`, `.legacy-h2`, `.pop-head h2` and `.news-head h2` inherit the browser default of `1.5em`, so they render at 24.75px while `.visit-head h2` renders at 52.8px and the hero at 89.6px. "Four consecutive years.", "Legacy.", "Start with these." and "In the news." are all smaller than the paragraph that follows them in some cases. This is almost certainly not intended.
+2. **A second font family is referenced.** `"Bricolage Grotesque"` appears on `.ticker-item` and `.panel .addr`. It is never loaded by the font link and neither selector matches anything on the page, so nothing renders in it, but Section 3 calls this a bug and it is one.
+3. **Duplicate rule blocks.** `.visit`, `.visit-head`, `.foot`, `.foot-bottom` and `.foot-col h4` are each defined twice, hundreds of lines apart, with the later block silently overriding the earlier. `.foot-col h4` changes weight from 700 to 600 this way, and `.foot-bottom` has its top border added and then removed.
+4. **Dead rules carrying weight.** The stylesheet contains complete component sets that no element on the homepage uses: `.util`, `.ticker`, `.story`, `.rail` and `.card`, `.feature`, `.two-up` and `.panel`, `.menu` and `.sig`. One of them, `.feature-bg`, held a 342KB embedded photograph that never appeared on screen.
+5. **`.hero` mobile height is set three times.** `90vh` at 560px, `100svh` in an `@supports` block, then `86svh` at 700px. The last one wins, so `90vh` is dead.
+
+### 10.6 Standing decisions
+
+- The values in 10.1 through 10.4 are what `/css/styles.css` now contains, so the homepage keeps rendering exactly as it did.
+- Defect 1 is left as built for now. Changing heading sizes changes the look of every section and is a design decision, not a refactor.
+- Defects 2 and 5 are removed, since neither can change what renders.
+- Defect 3 is left as built. The duplicate blocks are kept in source order so the cascade result is unchanged, with a comment marking each pair.
+- Defect 4 is kept in the stylesheet, because the story, menu and visit pages still have to be built and those component sets are the starting point for them. The embedded photograph is now a real file in `/images/`.
+
+### 10.7 Things the split added
+
+None of these change what renders. They are recorded here so Section 1 rule 5 still holds.
+
+- **`/js/site.js`.** The homepage carried an inline `<script>`. It drives the sticky header, the mobile menu and the scroll reveals, all of which live in the shared header, so it had to leave the page file along with the header. Section 8 does not list a `/js/` folder yet.
+- **Partial loading.** There is no build step, so `js/site.js` fetches `/partials/header.html` and `/partials/footer.html` at runtime and swaps them into `<div data-partial="header">` and `<div data-partial="footer">`. The site has to be served over http. Opening a page straight off the disk leaves the header and footer blank and logs a message saying so.
+- **`.head-slot`, height `80px`.** The placeholder the header partial replaces. It matches the nav height, so the page lays out identically before and after the swap and nothing jumps.
+- **Shared links.** The partials point at `index.html#legacy` and the like so they work from every page. On the page being linked to, `site.js` shortens those back to a bare `#legacy` so they scroll smoothly instead of reloading.
+- **`<picture>` around the content photographs.** Needed to serve `.webp` with a `.jpg` fallback. The `<picture>` takes over as the sized box, so `.legacy-collage picture` and `.pop-img picture` were added, and at 760px and below the collage `<picture>` takes `height:auto` so the `.lc-*` aspect ratios keep driving it.
+- **`width` and `height` on every `<img>`.** They reserve the right space while an image loads. `.foot-brand img` gained `height:auto` so the CSS width still wins over the new height attribute.
+- **The two logos ship as PNG only.** They are flat cream on transparency, where a palette PNG beats WebP. `logo-wordmark.png` is 8KB against 18KB as WebP, `logo-full.png` is 22KB against 48KB. Every photograph is `.webp` with a `.jpg` fallback as Section 6 requires.

@@ -1,0 +1,44 @@
+# Phnom Penh Restaurant — Project Instructions
+
+Read `DESIGN.md` in full before doing anything on this project. It is the single source of truth for all visual decisions. Do not propose or apply a colour, font, size, or spacing value that is not defined there.
+
+## What this project is
+
+A multipage marketing site for Phnom Penh Restaurant, 244 East Georgia Street, Vancouver Chinatown. Family run Cambodian and Vietnamese, open since 1985. Static HTML and CSS, no framework, no build step. It will be hosted as plain files.
+
+## Current state
+
+- `index.html` is the finished homepage. It is the visual reference for everything else.
+- Remaining pages to build: story, menu, visit.
+- The original homepage was a single self-contained file with base64 images. If that is still the case, splitting it is the first job. See below.
+
+## Hard rules
+
+1. All styling lives in `/css/styles.css`. No inline styles and no `<style>` blocks in page files.
+2. Header and footer come from `/partials/`. Never retype them into a page.
+3. Images are real files in `/images/`. Never base64, never embedded.
+4. No em dashes and no semicolons anywhere in visible copy.
+5. Every value traces back to a token in `DESIGN.md`. If something is missing, add it to `DESIGN.md` first, then use it.
+6. Full-height sections use `100svh` on mobile, not `100vh`.
+
+## How to work
+
+- One page per session. Start by reading `DESIGN.md` and `/css/styles.css`, then build.
+- Do not read `index.html` in full unless the task requires it. Read `/css/styles.css` instead. It is the smaller and more accurate source for styling.
+- Never edit more than one page at a time. If a change affects other pages, say so in one line and wait to be asked.
+- Check the work at 375px wide before calling it done.
+- When a shared component changes, change it in the partial or the stylesheet, never per page.
+
+## Copy voice
+
+Plain and factual. No corny openers, no sentimental flourishes, no rhetorical questions. Grounded in verified facts only: 1985, Chinatown, the Huynh family, Michelin Bib Gourmand 2022 to 2025, walk-ins only, not on delivery apps.
+
+## First job, if not already done
+
+The homepage started as one large self-contained file with every image embedded as base64. Split it:
+
+1. Extract all CSS into `/css/styles.css`, with the `DESIGN.md` tokens declared at the top as custom properties.
+2. Decode the base64 images out into `/images/` as real files, compressed, `.webp` with a `.jpg` fallback.
+3. Cut the header and footer into `/partials/header.html` and `/partials/footer.html`.
+4. Rewrite `index.html` to reference the stylesheet, the image files, and the partials.
+5. Confirm the page renders identically to the original before moving on.

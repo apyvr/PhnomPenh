@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node .claude/static-server.js)",
+      "Bash(curl -s http://localhost:8912)",
+      "Bash(python3 -)"
+    ]
+  }
+}

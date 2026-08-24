@@ -1,0 +1,30 @@
+<!-- Shared header. Do not retype this into a page.
+     Pages carry <div class="head-slot" data-partial="header"></div> and
+     js/site.js swaps this in. The slot is 80px tall so nothing shifts. -->
+<header class="site-head" id="head">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html#top" aria-label="Phnom Penh home">
+        <img src="images/logo-wordmark.png" width="463" height="95" alt="Phnom Penh, Exotic Cambodian and Vietnamese Foods">
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html#legacy">Legacy</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="reservations.html">Reservations</a>
+        <a class="nav-link" href="index.html#visit">Contact</a>
+      </div>
+      <a class="btn btn-red nav-cta" href="index.html#dishes">Menu</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mm-close" id="mmClose" aria-label="Close menu">&times;</button>
+  <a href="index.html#legacy">Legacy</a>
+  <a href="shop.html">Shop</a>
+  <a href="reservations.html">Reservations</a>
+  <a href="index.html#visit">Contact</a>
+  <a class="btn btn-red mm-btn" href="index.html#dishes">Menu</a>
+</div>
