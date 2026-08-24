@@ -80,6 +80,7 @@
     if (!nav) return;
 
     var mainTabs = nav.querySelectorAll('.menu-nav-main-tab');
+    var subTracks = nav.querySelectorAll('.menu-nav-subtrack');
     var subTabs = nav.querySelectorAll('.menu-nav-tab');
     if (!mainTabs.length || !subTabs.length) return;
 
@@ -103,6 +104,7 @@
     if (sections[0]) { sections[0].classList.add('active'); }
     if (subTabs[0]) { subTabs[0].classList.add('active'); }
     if (mainTabs[0]) { mainTabs[0].classList.add('active'); }
+    if (subTracks[0]) { subTracks[0].classList.add('active'); }
 
     // Main category tab handler (mobile/tablet)
     mainTabs.forEach(function (tab) {
@@ -114,6 +116,12 @@
         // Update main tab active state
         mainTabs.forEach(function (t) { t.classList.remove('active'); });
         this.classList.add('active');
+
+        // Show/hide subcategory tracks
+        subTracks.forEach(function (track) {
+          var trackCategory = track.getAttribute('data-category');
+          track.classList.toggle('active', trackCategory === category);
+        });
 
         // Hide all sections and reset subtabs
         sections.forEach(function (sec) { sec.classList.remove('active'); });
