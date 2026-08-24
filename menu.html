@@ -30,8 +30,15 @@
 
       <nav class="menu-nav" id="menu-nav">
         <div class="wrap">
-          <div class="menu-nav-track">
-            <a class="menu-nav-tab" data-spy="shareplates" href="#shareplates">Share Plates</a>
+          <!-- Main category tabs (mobile/tablet) -->
+          <div class="menu-nav-main-track">
+            <a class="menu-nav-main-tab active" data-category="food" href="#food">Food</a>
+            <a class="menu-nav-main-tab" data-category="desserts" href="#desserts">Desserts</a>
+            <a class="menu-nav-main-tab" data-category="drinks" href="#drinks">Drinks</a>
+          </div>
+          <!-- Subcategory tabs (desktop always visible, mobile under selected main) -->
+          <div class="menu-nav-track" id="menu-nav-subtabs">
+            <a class="menu-nav-tab active" data-spy="shareplates" href="#shareplates">Share Plates</a>
             <a class="menu-nav-tab" data-spy="cambodianstylenoodles" href="#cambodianstylenoodles">Noodles</a>
             <a class="menu-nav-tab" data-spy="ricedishes" href="#ricedishes">Rice</a>
             <a class="menu-nav-tab" data-spy="vietnameseentrées" href="#vietnameseentrées">Entrées</a>

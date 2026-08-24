@@ -78,8 +78,10 @@
   function initMenuNav() {
     var nav = document.getElementById('menu-nav');
     if (!nav) return;
-    var tabs = nav.querySelectorAll('.menu-nav-tab');
-    if (!tabs.length) return;
+
+    var mainTabs = nav.querySelectorAll('.menu-nav-main-tab');
+    var subTabs = nav.querySelectorAll('.menu-nav-tab');
+    if (!mainTabs.length || !subTabs.length) return;
 
     var menuCats = document.querySelector('.menu-cats');
     if (!menuCats) return;
@@ -90,20 +92,61 @@
     // Show nav
     nav.classList.add('on');
 
-    // Show first section on load
-    if (sections[0]) { sections[0].classList.add('active'); tabs[0].classList.add('active'); }
+    // Category mapping for mobile/tablet view
+    var categoryMap = {
+      food: ['shareplates', 'cambodianstylenoodles', 'ricedishes', 'vietnameseentrées', 'soupclaypot', 'vegetabledishes'],
+      desserts: ['desserts'],
+      drinks: ['drinks']
+    };
 
-    // Tab click handler - show/hide sections
-    tabs.forEach(function (tab, idx) {
+    // Show first section on load
+    if (sections[0]) { sections[0].classList.add('active'); }
+    if (subTabs[0]) { subTabs[0].classList.add('active'); }
+    if (mainTabs[0]) { mainTabs[0].classList.add('active'); }
+
+    // Main category tab handler (mobile/tablet)
+    mainTabs.forEach(function (tab) {
       tab.addEventListener('click', function (e) {
         e.preventDefault();
+        var category = this.getAttribute('data-category');
+        var categoryTabs = categoryMap[category] || [];
+
+        // Update main tab active state
+        mainTabs.forEach(function (t) { t.classList.remove('active'); });
+        this.classList.add('active');
+
+        // Hide all sections and reset subtabs
+        sections.forEach(function (sec) { sec.classList.remove('active'); });
+        subTabs.forEach(function (t) { t.classList.remove('active'); });
+
+        // Show first subcategory of this category
+        if (categoryTabs.length > 0) {
+          subTabs.forEach(function (tab) {
+            var spy = tab.getAttribute('data-spy');
+            if (categoryTabs.indexOf(spy) !== -1) {
+              tab.classList.add('active');
+              var section = document.getElementById(spy);
+              if (section) section.classList.add('active');
+              return; // Only activate first one
+            }
+          });
+        }
+      });
+    });
+
+    // Subcategory tab handler
+    subTabs.forEach(function (tab) {
+      tab.addEventListener('click', function (e) {
+        e.preventDefault();
+        var spy = this.getAttribute('data-spy');
 
         // Hide all sections
         sections.forEach(function (sec) { sec.classList.remove('active'); });
-        tabs.forEach(function (t) { t.classList.remove('active'); });
+        subTabs.forEach(function (t) { t.classList.remove('active'); });
 
         // Show clicked section
-        if (sections[idx]) { sections[idx].classList.add('active'); }
+        var section = document.getElementById(spy);
+        if (section) { section.classList.add('active'); }
         this.classList.add('active');
       });
     });
