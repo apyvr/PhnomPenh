@@ -3,7 +3,9 @@
     "allow": [
       "Bash(node .claude/static-server.js)",
       "Bash(curl -s http://localhost:8912)",
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "Bash(git push *)",
+      "Bash(git add *)"
     ]
   }
 }
