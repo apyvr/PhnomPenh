@@ -8,7 +8,8 @@
       "Bash(git add *)",
       "Bash(git commit -m 'Remove individual names from story; increase menu section spacing *)",
       "Bash(git commit -m 'Update navigation to Legacy - Shop - Menu - Contact *)",
-      "Bash(git commit -m 'Correct navigation to Legacy - Shop - Menu - Visit *)"
+      "Bash(git commit -m 'Correct navigation to Legacy - Shop - Menu - Visit *)",
+      "Bash(git commit -m 'Increase menu width from 900px to 1200px *)"
     ]
   }
 }
