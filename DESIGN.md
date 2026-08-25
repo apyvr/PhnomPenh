@@ -242,6 +242,12 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 - The cards have no photographs and no prices yet. The component is built so both drop in without a layout change.
 - The shop does not transact. The site is static files with no build step and no payment backend, so every card sends the reader to the phone or the restaurant.
 
+**Visit page sections**
+- `visit.html` is the informative page about visiting. It stacks several `.visit` sections on the dark ground, in this order: essentials (address, hours, contact), reservations, what to expect, getting here, the neighbourhood, and while you are here.
+- Each section after the first opens with `.visit-head`, the standard eyebrow plus section heading, then a `.visit-grid` of three `.visit-col` columns. A section can close with a `.visit-note` for a longer paragraph and CTAs.
+- `.visit + .visit` drops the section's top hairline, so the closing rule of the grid above is the single boundary between stacked sections.
+- Every `.visit` carries `scroll-margin-top: 80px` so anchor links land clear of the sticky header. The reservations content lives at `visit.html#reservations`, and the footer's Reservations link points there. `reservations.html` is retired and no longer linked.
+
 **Menu section nav**
 - A sticky bar of category tabs at the top of the menu list on `menu.html`, so the reader can jump between the nine printed categories without scrolling through 89 dishes.
 - Sticks at `top: 80px`, directly under the site header, `z-index: 40` so the header and the mobile menu stay above it. Ground `--surface` with the standard light hairline below, `rgba(36,36,36,.14)`.

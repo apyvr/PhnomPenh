@@ -416,7 +416,10 @@ img{display:block;max-width:100%}
 
 
 /* ========== visit (redesign) ========== */
-.visit{background:var(--ink);color:var(--paper);padding:104px 0 106px}
+.visit{background:var(--ink);color:var(--paper);padding:104px 0 106px;scroll-margin-top:80px}
+/* Stacked visit sections on visit.html. The grid above already closes with a
+   hairline, so the boundary carries one rule, not two. DESIGN.md 5. */
+.visit + .visit{border-top:none}
 .visit-head{margin-bottom:54px}
 .visit-head .eyebrow{color:var(--gold)}
 .visit-head h2{color:var(--paper)}
