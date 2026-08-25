@@ -9,7 +9,7 @@ A multipage marketing site for Phnom Penh Restaurant, 244 East Georgia Street, V
 ## Current state
 
 - `index.html` is the finished homepage. It is the visual reference for everything else.
-- All six pages exist: `index.html`, `story.html` (Our Story), `menu.html`, `shop.html`, `reservations.html`, `visit.html`.
+- All five pages exist: `index.html`, `story.html` (Our Story), `menu.html`, `shop.html`, `visit.html`. Reservations is a section of the visit page, `visit.html#reservations`, and `reservations.html` is deleted.
 - `menu.html` is transcribed from the owner's real printed menu, `/.claude/real-menu.pdf`. 89 items, trilingual, with GF and V markers.
 - The nav is Our Story, Shop, Menu, Visit plus a Call to order button.
 - `shop.html` has no prices or photographs yet. See DESIGN.md 13.3.
