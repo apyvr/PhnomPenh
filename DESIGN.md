@@ -31,9 +31,9 @@ The site is dark first. `--ink` is the ground and `--paper` is the text on it. L
 
 ```css
 :root {
-  --ink:         #0F0C0B;               /* page ground, darkest */
-  --ink-2:       #17110E;               /* second dark ground, legacy and footer */
-  --ink-3:       #1F1814;               /* third dark ground, panels */
+  --ink:         #242424;               /* the one dark ground, neutral charcoal, used site wide */
+  --ink-2:       #242424;               /* kept for existing selectors, same charcoal as --ink */
+  --ink-3:       #242424;               /* kept for existing selectors, same charcoal as --ink */
   --paper:       #F3E9DB;               /* warm cream, text on dark grounds */
   --surface:     #FBF9F4;               /* near white, the light section grounds */
   --paper-dim:   rgba(243,233,219,.66); /* secondary text on dark */
@@ -52,7 +52,7 @@ The site is dark first. `--ink` is the ground and `--paper` is the text on it. L
 
 - `--ink` is the default ground. A page runs about five dark sections to two light ones. Light sections use `--surface` and exist to break up the dark, not the other way round.
 - Text on dark uses the token ladder: `--paper`, then `--paper-dim`, then `--paper-faint`. Never invent a fourth step.
-- Text on light has no tokens. It is ink at an alpha, `rgba(15,12,11,α)`. Use `.74` for body, `.6` for a lead or a caption, `.5` for meta. Nothing lighter than `.5`.
+- Text on light has no tokens. It is ink at an alpha, `rgba(36,36,36,α)`. Use `.74` for body, `.6` for a lead or a caption, `.5` for meta. Nothing lighter than `.5`.
 - Hairlines on dark use `--line`, and `--line-strong` only on hover. Hairlines on light are ink at an alpha, `.10` to `.18` for section rules, `.30` to `.32` for dotted leaders.
 - Gold is a border and a label colour. It is never a fill for a large area. Its one fill is the button hover.
 - Flat `--red` is correct for small accents, the nav hover underline, the timeline dots, prices, and source labels. Red gradients exist but there is at most one per page, and the stops are `--red` to `#8E211C` at `155deg`.
@@ -65,13 +65,13 @@ These are in the stylesheet as written values. Reuse them exactly, or promote on
 | Value | Where |
 |---|---|
 | `#F6F1E9` | button text on dark and photo grounds |
-| `#171310` | button text when the button fills with gold on hover |
+| `#242424` | button text when the button fills with gold on hover |
 | `#e9e2d5` | placeholder behind a photo while it loads |
 | `#8E211C` | the dark stop of the featured news gradient |
-| `rgba(10,8,7,.82)` to `rgba(10,8,7,.9)` | the scrim over the news photograph |
-| `rgba(13,10,9,.5)` / `.55` / `.72` | news card grounds, resting and hover |
-| `rgba(15,12,11,.8)` | dish tag ground on a photo |
-| `rgba(15,12,11,.92)` | header ground once it solidifies |
+| `rgba(36,36,36,.82)` to `rgba(36,36,36,.9)` | the scrim over the news photograph |
+| `rgba(36,36,36,.5)` / `.55` / `.72` | news card grounds, resting and hover |
+| `rgba(36,36,36,.8)` | dish tag ground on a photo |
+| `rgba(36,36,36,.92)` | header ground once it solidifies |
 | `#A62C26` and `#F3E9DB` | inside the Michelin emblem SVG |
 
 ---
@@ -171,7 +171,7 @@ Build these once. Reuse them everywhere.
 
 **Nav (sticky, shared partial)**
 - `position: sticky`, not fixed. Nav height `80px`.
-- Starts transparent over a gradient that fades the hero into the top of the page. Past `40px` of scroll, `js/site.js` adds `.solid`, which switches it to `rgba(15,12,11,.92)` with a `10px` backdrop blur and a `--line` bottom border.
+- Starts transparent over a gradient that fades the hero into the top of the page. Past `40px` of scroll, `js/site.js` adds `.solid`, which switches it to `rgba(36,36,36,.92)` with a `10px` backdrop blur and a `--line` bottom border.
 - Desktop: logo left, links centred, gold outline Menu button right.
 - Links: Legacy, Shop, Reservations, Contact.
 - At 920px and below the links and the Menu button hide, and the burger appears. It animates to an X. The Menu button lives inside the overlay.
@@ -185,7 +185,7 @@ padding: 19px 42px;  border: 1.5px solid var(--gold);  border-radius: 0;
 background: transparent;  color: #F6F1E9;
 font-weight: 500;  font-size: 12.5px;  letter-spacing: .2em;  text-transform: uppercase;
 transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
-/* hover */  background: var(--gold);  color: #171310;
+/* hover */  background: var(--gold);  color: #242424;
 ```
 
 - `.btn-red` and `.btn-ghost` both resolve to the same appearance. They exist so a future page can diverge without touching `.btn`.
@@ -202,12 +202,12 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 
 **Dish card (What to Order)**
 - Upright `4/5` photo, becoming `16/11` at 860px. Three per row desktop, one per row mobile.
-- Decision cue tag sits on the photo, top left, gold on `rgba(15,12,11,.8)`.
+- Decision cue tag sits on the photo, top left, gold on `rgba(36,36,36,.8)`.
 - Dish name at weight 600 with the price pushed right in `--red`, then one plain sentence. The price never wraps, so a two size price like `$17 / $23` stays on one line and the name wraps instead.
 - Photo scales to `1.05` on hover over 0.8s.
 
 **News card**
-- A translucent dark card on a darkened photograph, `rgba(13,10,9,.55)` with a `--line` border and `4px` radius, going to `.72` and a gold border on hover.
+- A translucent dark card on a darkened photograph, `rgba(36,36,36,.55)` with a `--line` border and `4px` radius, going to `.72` and a gold border on hover.
 - Source label in `--red` uppercase, a Read label right, then a heading at weight 400 and a summary.
 - Four in a two column grid, under one wide featured panel whose left rail carries the one red gradient on the page.
 
@@ -242,7 +242,7 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 
 **Menu section nav**
 - A sticky bar of category tabs at the top of the menu list on `menu.html`, so the reader can jump between the nine printed categories without scrolling through 89 dishes.
-- Sticks at `top: 80px`, directly under the site header, `z-index: 40` so the header and the mobile menu stay above it. Ground `--surface` with the standard light hairline below, `rgba(15,12,11,.14)`.
+- Sticks at `top: 80px`, directly under the site header, `z-index: 40` so the header and the mobile menu stay above it. Ground `--surface` with the standard light hairline below, `rgba(36,36,36,.14)`.
 - Tabs are `11px` weight 600 at `.18em` uppercase, ink at `.5`, becoming full `--ink` with a `1.5px` `--red` underline when active or hovered, the same idiom as `.nav-link`. Tab padding keeps each one at least 44px tall.
 - The track is centred while the tabs fit and scrolls horizontally with a hidden scrollbar when they do not. `34px` gap, `26px` on the phone tier.
 - The bar carries the section gap itself, `78px` below (`52px` phone), and `.page-head + .menu` drops its top padding so the bar sits flush against the dark band.
