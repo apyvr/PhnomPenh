@@ -420,6 +420,21 @@ img{display:block;max-width:100%}
 /* Stacked visit sections on visit.html. The grid above already closes with a
    hairline, so the boundary carries one rule, not two. DESIGN.md 5. */
 .visit + .visit{border-top:none}
+
+/* Light variant for the alternating sections on visit.html. Mirrors the
+   .theme-light .visit values as a per-section modifier. DESIGN.md 5. */
+.visit-light{background:var(--surface);color:var(--ink)}
+.visit-light .visit-head .eyebrow{color:var(--red)}
+.visit-light .visit-head .eyebrow::before{background:var(--red);opacity:.8}
+.visit-light .visit-head h2{color:var(--ink)}
+.visit-light .visit-col h4{color:var(--red)}
+.visit-light .visit-col p{color:var(--ink)}
+.visit-light .visit-col .muted{color:rgba(36,36,36,.5)}
+.visit-light .visit-col a:not(.link){color:var(--ink)}
+.visit-light .visit-col a:not(.link):hover{color:var(--red)}
+.visit-light .visit-grid{border-bottom-color:rgba(36,36,36,.14)}
+.visit-light .visit-note p{color:rgba(36,36,36,.74)}
+.visit-light .link{color:var(--red)}
 .visit-head{margin-bottom:54px}
 .visit-head .eyebrow{color:var(--gold)}
 .visit-head h2{color:var(--paper)}
@@ -483,7 +498,7 @@ img{display:block;max-width:100%}
 .pop-note{color:rgba(36,36,36,.5);font-size:.9rem;margin:0}
 /* Buttons start as near-white for dark grounds. Every light section has to
    flip them to ink or they vanish. DESIGN.md 5. */
-.popular .btn,.menu .btn,.mich .btn,.shop .btn{color:var(--ink)}
+.popular .btn,.menu .btn,.mich .btn,.shop .btn,.visit-light .btn{color:var(--ink)}
 
 /* ========== news & reviews ========== */
 .news{position:relative;color:var(--paper);padding:104px 0 108px;

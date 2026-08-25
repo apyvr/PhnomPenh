@@ -243,9 +243,12 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 - The shop does not transact. The site is static files with no build step and no payment backend, so every card sends the reader to the phone or the restaurant.
 
 **Visit page sections**
-- `visit.html` is the informative page about visiting. It stacks several `.visit` sections on the dark ground, in this order: essentials (address, hours, contact), reservations, what to expect, getting here, the neighbourhood, and while you are here.
+- `visit.html` is the informative page about visiting. It stacks several `.visit` sections in this order: essentials (address, hours, contact), reservations, what to expect, getting here, the neighbourhood, and while you are here.
+- The grounds alternate, following the site rule that light sections break up the dark. Essentials, what to expect, and the neighbourhood stay on `--ink`. Reservations, getting here, and while you are here carry `.visit-light`, which grounds the section on `--surface` with the standard light-section swaps: red eyebrow and column labels, ink text at the section 2 alphas, red text links, ink button text.
+- `.visit-light` mirrors the `.theme-light .visit` values from the light homepage variant, as a per-section modifier. Its buttons join the light-section button rule.
 - Each section after the first opens with `.visit-head`, the standard eyebrow plus section heading, then a `.visit-grid` of three `.visit-col` columns. A section can close with a `.visit-note` for a longer paragraph and CTAs.
-- `.visit + .visit` drops the section's top hairline, so the closing rule of the grid above is the single boundary between stacked sections.
+- The neighbourhood section closes with a full width photograph in the `.chapters-final` idiom, the street scene outside the restaurant, captioned in the footer label style.
+- `.visit + .visit` drops the section's top hairline. The boundary between stacked sections is the ground change, and between the two darks it is the closing rule of the grid above.
 - Every `.visit` carries `scroll-margin-top: 80px` so anchor links land clear of the sticky header. The reservations content lives at `visit.html#reservations`, and the footer's Reservations link points there. `reservations.html` is retired and no longer linked.
 
 **Menu section nav**
