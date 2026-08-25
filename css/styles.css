@@ -339,9 +339,9 @@ img{display:block;max-width:100%}
 .menu-nav.on{display:block}
 
 /* Main category tabs (mobile/tablet only) - Large box style */
-.menu-nav-main-track{display:flex;gap:4px;padding:0 20px 0 20px;margin:0;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
+.menu-nav-main-track{display:flex;gap:4px;padding:0;margin:0;width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
 .menu-nav-main-track::-webkit-scrollbar{display:none}
-.menu-nav-main-tab{flex:1 1 0;padding:18px 8px;font-size:12px;font-weight:600;letter-spacing:.11em;
+.menu-nav-main-tab{flex:1 1 0;padding:18px 20px;font-size:12px;font-weight:600;letter-spacing:.11em;
   text-transform:uppercase;color:rgba(15,12,11,.5);background:rgba(15,12,11,.08);border:none;cursor:pointer;
   transition:background .25s,color .25s;white-space:normal;text-align:center;border-radius:2px;line-height:1.2}
 .menu-nav-main-tab:hover{background:rgba(15,12,11,.12);color:var(--ink)}
@@ -359,7 +359,7 @@ img{display:block;max-width:100%}
 
 /* Grouped subcategory tracks (for mobile/tablet) - all items visible */
 .menu-nav-subtrack{display:none;flex-wrap:wrap;column-gap:24px;row-gap:2px;overflow-x:visible;overflow-y:visible;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 0;border-bottom:1px solid rgba(15,12,11,.12);
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0;border-bottom:1px solid rgba(15,12,11,.12);
   margin-top:0;margin-bottom:0;justify-content:center}
 .menu-nav-subtrack::-webkit-scrollbar{display:none}
 .menu-nav-subtrack.active{display:flex}
@@ -372,7 +372,7 @@ img{display:block;max-width:100%}
 .menu-head .eyebrow::before{background:var(--red);opacity:.8}
 .menu-head h2{color:var(--ink);margin-top:14px}
 .menu-lead{color:rgba(15,12,11,.6);max-width:56ch;margin:22px auto 0;font-size:1.02rem;line-height:1.6}
-.menu-cats{display:flex;flex-direction:column;gap:54px;align-items:center;padding-top:42px}
+.menu-cats{display:flex;flex-direction:column;gap:54px;align-items:center;padding-top:0}
 .menu-cat-title{font-size:.82rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);
   margin:0 0 42px;text-align:center;width:100%;max-width:1200px}
 .menu-items{display:grid;grid-template-columns:1fr 1fr;gap:24px 60px;max-width:1200px;margin:0 auto}
