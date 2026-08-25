@@ -69,7 +69,6 @@ body{
   font-family:"Montserrat",system-ui,sans-serif;
   font-size:16.5px;line-height:1.65;letter-spacing:.01em;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  overflow-x:hidden;
 }
 h1,h2,h3{font-family:"Montserrat",sans-serif;font-weight:300;
   line-height:1.1;letter-spacing:.005em;margin:0;}
@@ -335,11 +334,12 @@ img{display:block;max-width:100%}
 
 /* ---------- menu section navigation ---------- */
 .menu-nav{position:sticky;top:0;background:var(--surface);border-bottom:none;
-  z-index:40;padding:0;margin-top:-70px;margin-bottom:24px;display:none}
+  z-index:40;padding:0;margin-top:-104px;margin-bottom:24px;display:none;
+  width:100vw;margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%)}
 .menu-nav.on{display:block}
 
 /* Main category tabs (mobile/tablet only) - Large box style */
-.menu-nav-main-track{display:flex;gap:4px;padding:0;margin:-8px calc(-50vw + 50%) 0 calc(-50vw + 50%);width:100vw;background:var(--surface);align-items:flex-start}
+.menu-nav-main-track{display:flex;gap:4px;padding:0;margin:-8px calc(-50vw + 50% - 4px) 0 calc(-50vw + 50% - 4px);width:calc(100vw + 8px);background:var(--surface);align-items:flex-start}
 .menu-nav-main-track::-webkit-scrollbar{display:none}
 .menu-nav-main-tab{flex:1 1 0;padding:18px;font-size:12px;font-weight:600;letter-spacing:.11em;
   text-transform:uppercase;color:rgba(15,12,11,.5);background:rgba(15,12,11,.08);border:none;cursor:pointer;
@@ -360,7 +360,7 @@ img{display:block;max-width:100%}
 /* Grouped subcategory tracks (for mobile/tablet) - all items visible */
 .menu-nav-subtrack{display:none;flex-wrap:wrap;column-gap:8px;row-gap:0px;overflow-x:visible;overflow-y:visible;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0;border-bottom:1px solid rgba(15,12,11,.12);
-  margin:9px calc(-50vw + 50%) 0 calc(-50vw + 50%);justify-content:center;width:100vw;background:var(--surface)}
+  margin:9px calc(-50vw + 50% - 4px) 0 calc(-50vw + 50% - 4px);justify-content:center;width:calc(100vw + 8px);background:var(--surface)}
 .menu-nav-subtrack::-webkit-scrollbar{display:none}
 .menu-nav-subtrack.active{display:flex}
 .menu-nav-subtrack .menu-nav-tab{flex:0 0 27%;padding:2px 1px;font-size:9px;border-bottom-width:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;text-align:center}
