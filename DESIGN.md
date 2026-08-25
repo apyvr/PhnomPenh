@@ -41,6 +41,7 @@ The site is dark first. `--ink` is the ground and `--paper` is the text on it. L
   --red:         #C5302A;               /* accent, prices, rules, dots, nav underline */
   --red-deep:    #9E241F;               /* dark stop of red gradients */
   --gold:        #BF9C5C;               /* button borders, eyebrows, labels */
+  --mint:        #57D7A5;               /* second accent, used sparingly, dark grounds only */
   --line:        rgba(243,233,219,.14); /* hairline on dark */
   --line-strong: rgba(243,233,219,.26); /* hairline on dark, hover */
   --maxw:        1240px;
@@ -55,6 +56,7 @@ The site is dark first. `--ink` is the ground and `--paper` is the text on it. L
 - Text on light has no tokens. It is ink at an alpha, `rgba(36,36,36,α)`. Use `.74` for body, `.6` for a lead or a caption, `.5` for meta. Nothing lighter than `.5`.
 - Hairlines on dark use `--line`, and `--line-strong` only on hover. Hairlines on light are ink at an alpha, `.10` to `.18` for section rules, `.30` to `.32` for dotted leaders.
 - Gold is a border and a label colour. It is never a fill for a large area. Its one fill is the button hover.
+- Mint `--mint` is the second accent and the only cool colour in the palette. Use it sparingly, for one small element at a time, and only on dark grounds. It is too light for text or hairlines on the cream surfaces, and it never competes with red or gold in the same component.
 - Flat `--red` is correct for small accents, the nav hover underline, the timeline dots, prices, and source labels. Red gradients exist but there is at most one per page, and the stops are `--red` to `#8E211C` at `155deg`.
 - Never grey body text. Secondary text is ink or paper at an alpha, never a grey hue.
 
@@ -173,7 +175,7 @@ Build these once. Reuse them everywhere.
 - `position: sticky`, not fixed. Nav height `80px`.
 - Starts transparent over a gradient that fades the hero into the top of the page. Past `40px` of scroll, `js/site.js` adds `.solid`, which switches it to `rgba(36,36,36,.92)` with a `10px` backdrop blur and a `--line` bottom border.
 - Desktop: logo left, links centred, gold outline Menu button right.
-- Links: Legacy, Shop, Reservations, Contact.
+- Links: Our Story, Shop, Menu, Visit.
 - At 920px and below the links and the Menu button hide, and the burger appears. It animates to an X. The Menu button lives inside the overlay.
 - A page carries `<div class="head-slot" data-partial="header"></div>`. The slot is `80px` tall so nothing shifts when the partial swaps in.
 
@@ -507,3 +509,31 @@ The first transcription came from the PDF text layer alone. That was a mistake. 
 Names printed with an en dash keep it. `Noodle Soup – Nuoc`, `Cabernet Sauvignon – Liberty School`. An en dash is not an em dash and section 1 rule 5 does not forbid it.
 
 **The rule this produced.** A menu is a layout, not a string. Read the rendered page, not the text layer. Bold carries meaning here, it separates what the customer must choose from what the kitchen is telling them, and an extractor throws that away. Anything with no description in print gets no description on the page. Do not write one to fill the space.
+
+---
+
+## 14. Light homepage variant, index-2.html
+
+Client direction from August 2026. The owner saw the Michelin section and asked for the rest of the page to follow it: white and red, because the dark charcoal grounds read as too dramatic. `index-2.html` is that variant, built for review beside `index.html`. Neither replaces the other until the client picks one.
+
+**How it works.** `index-2.html` is a copy of `index.html` with `class="theme-light"` on `<body>`. Every rule for the variant is scoped under `.theme-light` in `/css/styles.css`, so the original homepage and the five interior pages are untouched. No new colours, sizes or fonts exist in the variant. Every value comes from the light section vocabulary in section 2.
+
+**The mapping**
+
+| Piece | On index.html | On index-2.html |
+|---|---|---|
+| Body ground | `--ink` | `--surface` |
+| Hero | photograph with scrims | unchanged, it is a photograph, not a flat ground |
+| Michelin | light | unchanged, it is the section the client approved |
+| Legacy, News, Visit | dark | `--surface`, ink text at the section 2 alphas |
+| News background photograph | darkened butter beef photo | removed, plain `--surface` |
+| News cards | translucent dark | `--surface` with the `.14` ink hairline, gold border on hover, like `.shop-item` |
+| Featured news rail | red gradient | unchanged, it stays the one red gradient on the page |
+| Header and footer partials | dark | unchanged, shared chrome, changing them would change every page |
+
+**Rules the variant adds**
+
+- Consecutive light sections lose the colour change that normally marks a boundary, so each section carries a `border-top: 1px solid rgba(36,36,36,.10)`, the section rule weight from section 2. One rule per boundary, watch for doubling.
+- On light grounds red replaces gold for labels and text links: eyebrows and their rules, `.visit-col h4`, and `.link`, following the `.mich-eyebrow` and `.pop-more h4` idiom. Gold remains on buttons and hover borders only.
+- Buttons keep the single gold outline style with ink text, so `.theme-light .legacy .btn` and `.theme-light .visit .btn` join the light section button list from section 5. Hero buttons stay near-white, they sit on the photograph.
+- Text on light uses the section 2 alphas exactly: `.74` body, `.6` leads and card summaries, `.5` meta and muted.

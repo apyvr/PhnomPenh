@@ -28,6 +28,7 @@
    23. Visit
    24. Footer
    25. Page head, story chapters, shop
+   25b. Light homepage variant, index-2.html
    26. Responsive
 
    RESERVED means no page uses it yet. These are the parts bin for story.html,
@@ -53,6 +54,7 @@
   --red:#C5302A;                        /* accent, prices, rules, dots, nav underline */
   --red-deep:#9E241F;                   /* dark stop of red gradients */
   --gold:#BF9C5C;                       /* button borders, eyebrows, labels */
+  --mint:#57D7A5;                       /* second accent, sparing, dark grounds only, DESIGN.md 2 */
   --line:rgba(243,233,219,.14);         /* hairline on dark */
   --line-strong:rgba(243,233,219,.26);  /* hairline on dark, hover */
   --maxw:1240px;                        /* content container */
@@ -575,6 +577,67 @@ img{display:block;max-width:100%}
 .shop-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;
   margin-top:66px;padding-top:32px;border-top:1px solid rgba(36,36,36,.14)}
 .shop-note{color:rgba(36,36,36,.5);font-size:.9rem;max-width:52ch;margin:0;line-height:1.55}
+
+/* --------------------------------------------------------------------------
+   25b. Light homepage variant                            DESIGN.md 14
+   index-2.html carries class="theme-light" on <body>. Client direction:
+   white and red, the dark grounds are too dramatic. The hero keeps its
+   photograph and scrims, the Michelin section is already the approved look,
+   and the header and footer partials are shared chrome and stay as built.
+   Everything else moves onto --surface using the light section vocabulary
+   from DESIGN.md 2. No new colours.
+   -------------------------------------------------------------------------- */
+.theme-light{background:var(--surface);color:var(--ink)}
+/* The hero headline inherits the body colour. On the variant the body is ink,
+   so the hero restates paper or the headline goes dark on the photograph. */
+.theme-light .hero{color:var(--paper)}
+
+/* Consecutive light sections lose the ground change that marks a boundary,
+   so each one carries the .10 ink section rule instead. DESIGN.md 14. */
+.theme-light .legacy,
+.theme-light .popular,
+.theme-light .news,
+.theme-light .visit{border-top:1px solid rgba(36,36,36,.10)}
+
+/* legacy */
+.theme-light .legacy{background:var(--surface);color:var(--ink)}
+.theme-light .legacy-h2{color:var(--ink)}
+.theme-light .legacy-lead{color:rgba(36,36,36,.6)}
+.theme-light .legacy .btn,
+.theme-light .visit .btn{color:var(--ink)}
+
+/* news. The background photograph goes, the cards borrow the .shop-item
+   idiom, and the featured rail keeps the one red gradient on the page. */
+.theme-light .news{background:var(--surface);color:var(--ink)}
+.theme-light .news-head h2{color:var(--ink)}
+.theme-light .news-feature{background:var(--surface);border-color:rgba(36,36,36,.14)}
+.theme-light .news-feature:hover{border-color:var(--gold)}
+.theme-light .nf-main h3{color:var(--ink)}
+.theme-light .nf-main p{color:rgba(36,36,36,.74)}
+.theme-light .nc{background:var(--surface);border-color:rgba(36,36,36,.14)}
+.theme-light .nc:hover{background:var(--surface);border-color:var(--gold)}
+.theme-light .nc h3{color:var(--ink)}
+.theme-light .nc p{color:rgba(36,36,36,.6)}
+.theme-light .nc-read{color:rgba(36,36,36,.5)}
+.theme-light .nc:hover .nc-read{color:var(--red)}
+
+/* visit */
+.theme-light .visit{background:var(--surface);color:var(--ink)}
+.theme-light .visit-head .eyebrow{color:var(--red)}
+.theme-light .visit-head .eyebrow::before{background:var(--red);opacity:.8}
+.theme-light .visit-head h2{color:var(--ink)}
+.theme-light .visit-col h4{color:var(--red)}
+.theme-light .visit-col p{color:var(--ink)}
+.theme-light .visit-col .muted{color:rgba(36,36,36,.5)}
+.theme-light .visit-col a:not(.link){color:var(--ink)}
+.theme-light .visit-col a:not(.link):hover{color:var(--red)}
+.theme-light .visit-grid{border-bottom-color:rgba(36,36,36,.14)}
+.theme-light .visit-note p{color:rgba(36,36,36,.74)}
+
+/* On light grounds red replaces gold for text links, the .mich-eyebrow and
+   .pop-more h4 idiom. Gold stays on buttons and hover borders. DESIGN.md 14. */
+.theme-light .news .link,
+.theme-light .visit .link{color:var(--red)}
 
 /* ==========================================================================
    26. Responsive. Two breakpoints, and only two.
