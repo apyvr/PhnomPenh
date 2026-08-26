@@ -153,7 +153,7 @@ A new section uses `104px` top and bottom unless there is a reason to match a ne
 
 **Radius.** There is no single radius. `0` on buttons. `2px` on the focus ring and the dish tag. `3px` on every photograph and collage tile. `4px` on news cards and panels. `999px` on pill shaped tags. `50%` on the timeline dots.
 
-**Gaps in use.** `12px` collage, `14px` button rows, `18px` news grid, `22px` rail, `28px` signature grid, `30px` dish grid, `40px` visit and footer columns, `64px` footer top.
+**Gaps in use.** `12px` collage, `14px` button rows, `18px` news grid, `22px` rail, `28px` signature grid, `30px` dish grid, `40px` visit and footer columns, `64px` footer top and the visit split.
 
 **Breakpoints.** Two, and only two.
 
@@ -251,13 +251,14 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 - The neighbourhood section closes with a full width photograph in the `.chapters-final` idiom, the street scene outside the restaurant, captioned in the footer label style.
 - `.visit + .visit` drops the section's top hairline. The boundary between stacked sections is the ground change, and between the two darks it is the closing rule of the grid above.
 - Every `.visit` carries `scroll-margin-top: 80px` so anchor links land clear of the sticky header. The reservations content lives at `visit.html#reservations`, and the footer's Reservations link points there. `reservations.html` is retired and no longer linked.
-- The homepage visit section leans on the neighbourhood rather than repeating the details. It is the `.visit-head`, the archival Chinatown photograph in the `.chapters-final` idiom, and a `.visit-note` that sends the reader to `visit.html` for hours, reservations and parking. The address stays in the note copy, and the full details live in the footer and on the visit page.
+- The homepage visit section leans on the neighbourhood rather than repeating the details. It is `.visit-split`, a two column grid at `1.05fr .95fr` with a `64px` gap, centred vertically. The left column carries the `.visit-head`, one paragraph in the page-lead style, and the CTAs. The right column is the archival Chinatown photograph at `5/4`, radius `3px`, with a caption in the footer label style. Tablet narrows the gap to `40px`, phone stacks text over photo. The full details live in the footer and on the visit page.
 
 **Photo feed**
-- The last section on the homepage, directly before the footer, on the `--surface` ground. An eyebrow and section heading left, the Instagram handle as a `.link` right, then `.feed-grid`, a single row of six square photo tiles.
-- Tiles are `aspect-ratio: 1/1` at a `12px` gap, radius `3px`, matching the collage. Each tile links to the Instagram account and its photograph scales to `1.05` on hover over 0.8s, the dish card idiom.
+- The last section on the homepage, directly before the footer, on the `--surface` ground. An eyebrow and section heading left, the Instagram handle as a `.link` right, then `.feed-grid`, a mosaic of five photo tiles.
+- The grid is four columns at a `12px` gap. The first tile carries `.feed-tile-big` and spans two columns and two rows, and the four small tiles are `aspect-ratio: 1/1`, which sizes the rows, so the big tile lands square as well. Radius `3px`, matching the collage.
+- Each tile links to the Instagram account and its photograph scales to `1.05` on hover over 0.8s, the dish card idiom.
 - On the light ground the eyebrow and the `.link` are `--red`, per the light-section rule.
-- Tablet shows three tiles per row, phone shows two. The images are drawn from the photographs already on the site.
+- Tablet keeps the four column mosaic. Phone drops to two columns, where the big tile runs full width above the small tiles. The images are drawn from the photographs already on the site.
 
 **Menu section nav**
 - A sticky bar of category tabs at the top of the menu list on `menu.html`, so the reader can jump between the nine printed categories without scrolling through 89 dishes.
@@ -298,6 +299,7 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 
 ## 7. Copy voice
 
+- **The positioning statement.** Phnom Penh is a family-run Vancouver restaurant serving Cambodian and Vietnamese cuisine in the heart of Chinatown since 1985. Born from a journey spanning Cambodia, Vietnam and Canada, the restaurant carries generations of recipes, resilience and hospitality to East Georgia Street. More than forty years later, the same spirit of family, tradition and togetherness remains at the heart of everything it does. Page copy draws its themes from this statement, the journey, the generations of recipes, and the spirit of family and togetherness, without pasting it verbatim on every page.
 - Plain and factual. No corny openers, no sentimental flourishes, no rhetorical questions.
 - Grounded in verified facts only: 1985, Chinatown, the Huynh family, Bib Gourmand every year since the 2022 Vancouver debut, not on delivery apps.
 - **The booking policy, stated the same way everywhere.** Tables of five or fewer are walk in, no reservations. Groups of six or more can call to reserve, and large tables are seated at 5:00pm or 7:00pm. Open 11:00 to 21:00, closed Tuesdays. The site used to say "walk-ins only" flatly, which is wrong for large groups.
