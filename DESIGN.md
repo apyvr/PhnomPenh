@@ -118,7 +118,7 @@ Everything from `.btn` down in that table is uppercase. Everything above it is s
 
 **Rules**
 
-- There is one section heading size, set once on `.mich-h2, .legacy-h2, .pop-head h2, .news-head h2, .visit-head h2`. A new section heading joins that selector list. It is never sized locally.
+- There is one section heading size, set once on `.mich-h2, .legacy-h2, .pop-head h2, .news-head h2, .visit-head h2, .feed-head h2`. A new section heading joins that selector list. It is never sized locally.
 - The type ladder is hero `89.6px`, section heading `52.8px`, card heading `27.2px`, dish name `19.5px`, body `16.5px`. Nothing nested inside a section may be larger than that section's heading.
 - Weight 300 is the default for anything display sized. 400 is body. 500 is buttons only. 600 is every small uppercase label, every nav link, and dish names. 700 exists in the stylesheet for components that no page uses yet.
 - The eyebrow always carries a `26px` gold rule before it at `.7` opacity. In light sections the eyebrow and its rule turn `--red`.
@@ -146,6 +146,7 @@ The gutter is a fixed `28px`, dropping to `20px` at 560px.
 | `.popular` | `104px` / `104px` | unchanged |
 | `.news` | `104px` / `108px` | unchanged |
 | `.visit` | `104px` / `106px` | unchanged |
+| `.feed` | `104px` / `104px` | unchanged |
 | `.foot` | `82px` / `34px` | unchanged |
 
 A new section uses `104px` top and bottom unless there is a reason to match a neighbour.
@@ -208,7 +209,7 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 - Dish name at weight 600 with the price pushed right in `--red`, then one plain sentence. The price never wraps, so a two size price like `$17 / $23` stays on one line and the name wraps instead.
 - Photo scales to `1.05` on hover over 0.8s.
 
-**News card**
+**News card** (retired from the homepage, the component stays in the stylesheet as parts)
 - A translucent dark card on a darkened photograph, `rgba(36,36,36,.55)` with a `--line` border and `4px` radius, going to `.72` and a gold border on hover.
 - Source label in `--red` uppercase, a Read label right, then a heading at weight 400 and a summary.
 - Four in a two column grid, under one wide featured panel whose left rail carries the one red gradient on the page.
@@ -243,13 +244,20 @@ transition: background .35s var(--ease), color .35s var(--ease), border-color .3
 - The shop does not transact. The site is static files with no build step and no payment backend, so every card sends the reader to the phone or the restaurant.
 
 **Visit page sections**
-- `visit.html` is the informative page about visiting. It stacks several `.visit` sections in this order: essentials (address, hours, contact), reservations, what to expect, getting here, the neighbourhood, and while you are here.
+- `visit.html` is the informative page about visiting. It stacks several `.visit` sections in this order: essentials (address, hours, contact), reservations, what to expect, getting here, our block (the history of the 200 block of East Georgia Street), and while you are here.
 - The grounds alternate, following the site rule that light sections break up the dark. Essentials, what to expect, and the neighbourhood stay on `--ink`. Reservations, getting here, and while you are here carry `.visit-light`, which grounds the section on `--surface` with the standard light-section swaps: red eyebrow and column labels, ink text at the section 2 alphas, red text links, ink button text.
 - `.visit-light` mirrors the `.theme-light .visit` values from the light homepage variant, as a per-section modifier. Its buttons join the light-section button rule.
 - Each section after the first opens with `.visit-head`, the standard eyebrow plus section heading, then a `.visit-grid` of three `.visit-col` columns. A section can close with a `.visit-note` for a longer paragraph and CTAs.
 - The neighbourhood section closes with a full width photograph in the `.chapters-final` idiom, the street scene outside the restaurant, captioned in the footer label style.
 - `.visit + .visit` drops the section's top hairline. The boundary between stacked sections is the ground change, and between the two darks it is the closing rule of the grid above.
 - Every `.visit` carries `scroll-margin-top: 80px` so anchor links land clear of the sticky header. The reservations content lives at `visit.html#reservations`, and the footer's Reservations link points there. `reservations.html` is retired and no longer linked.
+- The homepage visit section leans on the neighbourhood rather than repeating the details. It is the `.visit-head`, the archival Chinatown photograph in the `.chapters-final` idiom, and a `.visit-note` that sends the reader to `visit.html` for hours, reservations and parking. The address stays in the note copy, and the full details live in the footer and on the visit page.
+
+**Photo feed**
+- The last section on the homepage, directly before the footer, on the `--surface` ground. An eyebrow and section heading left, the Instagram handle as a `.link` right, then `.feed-grid`, a single row of six square photo tiles.
+- Tiles are `aspect-ratio: 1/1` at a `12px` gap, radius `3px`, matching the collage. Each tile links to the Instagram account and its photograph scales to `1.05` on hover over 0.8s, the dish card idiom.
+- On the light ground the eyebrow and the `.link` are `--red`, per the light-section rule.
+- Tablet shows three tiles per row, phone shows two. The images are drawn from the photographs already on the site.
 
 **Menu section nav**
 - A sticky bar of category tabs at the top of the menu list on `menu.html`, so the reader can jump between the nine printed categories without scrolling through 89 dishes.
